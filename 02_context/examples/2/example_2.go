@@ -11,6 +11,11 @@ func main() {
 	_ = cancel // Discard the cancel function, it's not used in this example.
 
 	go func() {
+		<-ctx.Done()
+		fmt.Println("Context done!")
+	}()
+
+	go func() {
 		time.Sleep(1 * time.Second)
 		fmt.Println("After 1 second:", ctx.Err())
 	}()

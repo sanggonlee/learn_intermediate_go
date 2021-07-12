@@ -14,6 +14,11 @@ func main() {
 	})
 
 	go func() {
+		<-ctx.Done()
+		fmt.Println("Context done!")
+	}()
+
+	go func() {
 		time.Sleep(1 * time.Second)
 		fmt.Println("After 1 second:", ctx.Err())
 	}()
